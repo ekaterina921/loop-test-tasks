@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProjectPage } from '../pages/ProjectPage';
 import testData from '../test-data/test-cases.json';
@@ -12,7 +12,7 @@ test.describe('Data-Driven Task Verification Tests', () => {
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     projectPage = new ProjectPage(page);
-    
+
     // Login before each test
     await loginPage.goto();
     await loginPage.login(testData.loginCredentials.email, testData.loginCredentials.password);
@@ -29,7 +29,7 @@ test.describe('Data-Driven Task Verification Tests', () => {
       await test.step(`Verify "${testCase.taskName}" is in "${testCase.expectedColumn}" column`, async () => {
         await projectPage.verifyTaskInColumn(taskCard, testCase.expectedColumn);
       });
-      
+
       // Verify task has correct tags
       await test.step(`Verify "${testCase.taskName}" has tags: ${testCase.expectedTags.join(', ')}`, async () => {
         await projectPage.verifyTaskTags(taskCard, testCase.expectedTags);

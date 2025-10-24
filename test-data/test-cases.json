@@ -10,7 +10,10 @@
       "project": "Web Application",
       "taskName": "Implement user authentication",
       "expectedColumn": "To Do",
-      "expectedTags": ["Feature", "High Priority"]
+      "expectedTags": [
+        "Feature",
+        "High Priority"
+      ]
     },
     {
       "id": "TC002",
@@ -18,7 +21,9 @@
       "project": "Web Application",
       "taskName": "Fix navigation bug",
       "expectedColumn": "To Do",
-      "expectedTags": ["Bug"]
+      "expectedTags": [
+        "Bug"
+      ]
     },
     {
       "id": "TC003",
@@ -26,7 +31,9 @@
       "project": "Web Application",
       "taskName": "Design system updates",
       "expectedColumn": "In Progress",
-      "expectedTags": ["Design"]
+      "expectedTags": [
+        "Design"
+      ]
     },
     {
       "id": "TC004",
@@ -34,7 +41,9 @@
       "project": "Mobile Application",
       "taskName": "Push notification system",
       "expectedColumn": "To Do",
-      "expectedTags": ["Feature"]
+      "expectedTags": [
+        "Feature"
+      ]
     },
     {
       "id": "TC005",
@@ -42,7 +51,10 @@
       "project": "Mobile Application",
       "taskName": "Offline mode",
       "expectedColumn": "In Progress",
-      "expectedTags": ["Feature", "High Priority"]
+      "expectedTags": [
+        "Feature",
+        "High Priority"
+      ]
     },
     {
       "id": "TC006",
@@ -50,7 +62,9 @@
       "project": "Mobile Application",
       "taskName": "App icon design",
       "expectedColumn": "Done",
-      "expectedTags": ["Design"]
+      "expectedTags": [
+        "Design"
+      ]
     }
   ]
 }
