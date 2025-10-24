@@ -19,10 +19,7 @@ export class ProjectPage {
     await expect(taskCard).toBeVisible({ timeout: 1000});
     return taskCard;
   }
-  async getTaskColumn(taskName: string): Promise<string> {
-    // Find the task card
-    const taskCard = await this.getTaskCard(taskName);
-    
+  async getTaskColumn(taskCard: Locator): Promise<string> {  
     // Find the parent column
     const column = taskCard.locator('xpath=parent::div/parent::div/preceding-sibling::h2').first();
     
@@ -32,10 +29,7 @@ export class ProjectPage {
     return columnName?.trim() || '';
   }
 
-  async getTaskTags(taskName: string): Promise<string[]> {
-    // Find the task card
-    const taskCard = await this.getTaskCard(taskName);
-    
+  async getTaskTags(taskCard: Locator): Promise<string[]> { 
     // Find all tags within the task card
     const tags = taskCard.locator('xpath=parent::div/div/span');
     const tagCount = await tags.count();
@@ -51,13 +45,13 @@ export class ProjectPage {
     return tagTexts;
   }
 
-  async verifyTaskInColumn(taskName: string, expectedColumn: string) {
-    const actualColumn = await this.getTaskColumn(taskName);
+  async verifyTaskInColumn(taskCard: Locator, expectedColumn: string) {
+    const actualColumn = await this.getTaskColumn(taskCard);
     expect(actualColumn.toLowerCase()).toContain(expectedColumn.toLowerCase());
   }
 
-  async verifyTaskTags(taskName: string, expectedTags: string[]) {
-    const actualTags = await this.getTaskTags(taskName);
+  async verifyTaskTags(taskCard: Locator, expectedTags: string[]) {
+    const actualTags = await this.getTaskTags(taskCard);
     
     // Verify all expected tags are present
     for (const expectedTag of expectedTags) {

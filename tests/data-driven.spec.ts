@@ -21,17 +21,18 @@ test.describe('Data-Driven Task Verification Tests', () => {
   // Data-driven tests: iterate through each test case
   for (const testCase of testData.testCases) {
     test(`${testCase.id}: ${testCase.description}`, async ({ page }) => {
-      // Navigate to the project
+      // Navigate to the project and find the card
       await projectPage.navigateToProject(testCase.project);
-      
+      const taskCard = await projectPage.getTaskCard(testCase.taskName);
+
       // Verify task is in the correct column
       await test.step(`Verify "${testCase.taskName}" is in "${testCase.expectedColumn}" column`, async () => {
-        await projectPage.verifyTaskInColumn(testCase.taskName, testCase.expectedColumn);
+        await projectPage.verifyTaskInColumn(taskCard, testCase.expectedColumn);
       });
       
       // Verify task has correct tags
       await test.step(`Verify "${testCase.taskName}" has tags: ${testCase.expectedTags.join(', ')}`, async () => {
-        await projectPage.verifyTaskTags(testCase.taskName, testCase.expectedTags);
+        await projectPage.verifyTaskTags(taskCard, testCase.expectedTags);
       });
     });
   }
