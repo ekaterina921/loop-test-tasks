@@ -13,6 +13,7 @@ export class ProjectPage {
     await projectLink.click();
     await this.page.waitForLoadState('networkidle');
   }
+  
   async getTaskCard(taskName: string){
     const taskCard = this.page.getByRole('heading', { level: 3, name: taskName});
     await expect(taskCard).toBeVisible({ timeout: 1000});
