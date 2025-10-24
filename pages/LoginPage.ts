@@ -2,13 +2,13 @@ import { Page, Locator } from '@playwright/test';
 
 export class LoginPage {
   readonly page: Page;
-  readonly emailInput: Locator;
+  readonly userNameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.emailInput = page.locator('#username');
+    this.userNameInput = page.locator('#username');
     this.passwordInput = page.locator('#password');
     this.loginButton = page.getByRole("button", {name : "Sign in"});
   }
@@ -17,9 +17,15 @@ export class LoginPage {
     await this.page.goto('/');
   }
 
-  async login(email: string, password: string) {
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
+  async login() {
+    if(typeof process.env.TEST_USERNAME === "string" 
+      && typeof process.env.TEST_PASSWORD === "string")
+    {
+    await this.userNameInput.fill(process.env.TEST_USERNAME);
+    await this.passwordInput.fill(process.env.TEST_PASSWORD);
+    } else {
+      throw new Error('TEST_USERNAME and TEST_PASSWORD must be set in .env file.');
+    }
     await this.loginButton.click();
     // Wait for navigation after login
     await this.page.waitForLoadState('networkidle');
