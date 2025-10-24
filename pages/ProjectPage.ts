@@ -16,26 +16,26 @@ export class ProjectPage {
 
   async getTaskColumn(taskName: string): Promise<string> {
     // Find the task card
-    const taskCard = this.page.locator(`[class*="task"], [class*="card"]`).filter({ hasText: taskName }).first();
+    const taskCard = this.page.getByRole('heading', { level: 3, name: taskName});
     await expect(taskCard).toBeVisible({ timeout: 10000 });
     
     // Find the parent column
-    const column = taskCard.locator('xpath=ancestor::*[contains(@class, "column") or contains(@class, "lane")]').first();
+    const column = taskCard.locator('xpath=parent::div/parent::div/parent::div/h2').first();
     
     // Get column header text
-    const columnHeader = column.locator('[class*="header"], h2, h3').first();
-    const columnName = await columnHeader.textContent();
+    //const columnHeader = column.locator('xpath=getText()');
+    const columnName = await column.textContent();
     
     return columnName?.trim() || '';
   }
 
   async getTaskTags(taskName: string): Promise<string[]> {
     // Find the task card
-    const taskCard = this.page.locator(`[class*="task"], [class*="card"]`).filter({ hasText: taskName }).first();
+    const taskCard = this.page.getByRole('heading', { level: 3, name: taskName});
     await expect(taskCard).toBeVisible({ timeout: 10000 });
     
     // Find all tags within the task card
-    const tags = taskCard.locator('[class*="tag"], [class*="badge"], [class*="label"]');
+    const tags = taskCard.locator('xpath=parent::div/div/span');
     const tagCount = await tags.count();
     
     const tagTexts: string[] = [];
