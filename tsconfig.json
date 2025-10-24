@@ -8,8 +8,17 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "@playwright/test"]
+    "types": [
+      "node",
+      "@playwright/test"
+    ]
   },
-  "include": ["tests/**/*", "pages/**/*", "test-data/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "tests/**/*",
+    "pages/**/*",
+    "test-data/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
