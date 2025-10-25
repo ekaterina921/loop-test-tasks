@@ -15,7 +15,9 @@ test.describe('Data-Driven Task Verification Tests', () => {
 
     // Login before each test
     await loginPage.goto();
-    await loginPage.login(testData.loginCredentials.email, testData.loginCredentials.password);
+    const username = process.env.TEST_USERNAME?.toString;
+    const password = process.env.TEST_PASSWORD?.toString;
+    await loginPage.login();
   });
 
   // Data-driven tests: iterate through each test case

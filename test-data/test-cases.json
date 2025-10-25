@@ -1,8 +1,4 @@
 {
-  "loginCredentials": {
-    "email": "admin",
-    "password": "password123"
-  },
   "testCases": [
     {
       "id": "TC001",
