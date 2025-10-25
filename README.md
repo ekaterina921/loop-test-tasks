@@ -15,9 +15,10 @@ npm install -D dotenv
 
 2. Create .env file in the root
 
-3. Add credentials to .env file
+3. Add credentials to .env file (see .env.example)
 
 TEST_USERNAME=[write username here without brackets]
+
 TEST_PASSWORD=[write password here without brackets]
 
 4. Run tests
